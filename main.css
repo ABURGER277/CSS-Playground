@@ -1,0 +1,27 @@
+body {
+  font-family: Georgia, serif;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  background-color: #D5CABD;
+}
+header {
+  h1 {
+    font-size: 2em;
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+}
+
+p {
+  margin: 0 0 20px;
+  color: #555;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}

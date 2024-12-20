@@ -4,122 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CSS Playground</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin: 0;
-      padding: 20px;
-      background-color: #f9f9f9;
-    }
-
-    h1 {
-      font-size: 2em;
-      margin-bottom: 5px;
-    }
-
-    p {
-      margin: 0 0 20px;
-      color: #555;
-    }
-
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .card {
-      border: 2px solid #000;
-      border-radius: 10px;
-      padding: 10px;
-      background-color: #fff;
-      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .card img {
-      width: 100%;
-      height: auto;
-      border-bottom: 2px solid #000;
-    }
-
-    .card .title {
-      font-weight: bold;
-      margin: 10px 0;
-    }
-
-    .card .description {
-      color: #666;
-      font-size: 0.9em;
-    }
-  </style>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="card.css">
 </head>
 <body>
-  <h1>Welcome!</h1>
-  <p>This is Aburger's CSS - Playground</p>
+  <header id="header">
+    <h1 onclick="moveHome()">Welcome!</h1>
+    <p>This is Aburger's CSS - Playground</p>
+  </header>
   <div class="grid-container">
-    <div class="card">
-      <div class="image-placeholder">test image</div>
-      <div class="title">Test Title</div>
-      <div class="description">Description.......................</div>
-    </div>
-    <div class="card">
-      <div class="image-placeholder">test image</div>
-      <div class="title">Test Title</div>
-      <div class="description">Description.......................</div>
-    </div>
-    <div class="card">
-      <div class="image-placeholder">test image</div>
-      <div class="title">Test Title</div>
-      <div class="description">Description.......................</div>
-    </div>
-    <div class="card">
-      <div class="image-placeholder">test image</div>
-      <div class="title">Test Title</div>
-      <div class="description">Description.......................</div>
-    </div>
-    <div class="card">
-      <div class="image-placeholder">test image</div>
-      <div class="title">Test Title</div>
-      <div class="description">Description.......................</div>
-    </div>
-    <div class="card">
-      <div class="image-placeholder">test image</div>
-      <div class="title">Test Title</div>
-      <div class="description">Description.......................</div>
-    </div>
-    <div class="card">
-      <div class="image-placeholder">test image</div>
-      <div class="title">Test Title</div>
-      <div class="description">Description.......................</div>
-    </div>
-    <div class="card">
-      <div class="image-placeholder">test image</div>
-      <div class="title">Test Title</div>
-      <div class="description">Description.......................</div>
-    </div>
-    <div class="card">
-      <div class="image-placeholder">test image</div>
-      <div class="title">Test Title</div>
-      <div class="description">Description.......................</div>
-    </div>
-    <div class="card">
-      <div class="image-placeholder">test image</div>
-      <div class="title">Test Title</div>
-      <div class="description">Description.......................</div>
-    </div>
-    <div class="card">
-      <div class="image-placeholder">test image</div>
-      <div class="title">Test Title</div>
-      <div class="description">Description.......................</div>
-    </div>
-    <div class="card">
-      <div class="image-placeholder">test image</div>
-      <div class="title">Test Title</div>
-      <div class="description">Description.......................</div>
-    </div>
+    <!-- Archives Card -->
   </div>
+  <script>
+    const archives = [
+      {title: "transform", description: "transform test", url: "transform.html",},
+      {title: "flex-grow", description: "flex-grow: dynamic-example", url: "flex-grow.html",},
+      // Test2는 썸네일 이미지 없음
+      {title: "Test2", description: "Second Archive / Hello World!", url: "test2.html"},
+      // Test1은 썸네일 이미지 있음
+      {title: "Test1", description: "Init Archive / Hello World!", image: "test.png", url: "test1.html"},
+    ]
+
+    for(let i = 0; i < archives.length; i ++) {
+      const gridContainer = document.getElementsByClassName("grid-container");
+      const cardItem = document.createElement("div");
+
+      const archive = archives[i]
+      cardItem.innerHTML = `<div class="card" onclick="moveUrl('${archive.url}')">
+        <div class="image-placeholder"><img src="${archive.image}" onerror="this.src='no_image_512.png'"></div>
+        <div class="title">${archive.title}</div>
+        <div class="description">${archive.description}</div>
+        </div>`;
+      gridContainer[0].appendChild(cardItem);
+    }
+
+    function moveHome () {
+      window.location.href = `http://127.0.0.1:5500/index.html`;
+    }
+
+    function moveUrl (url) {
+      window.location.href = `http://127.0.0.1:5500/archive/${url}`;
+    }
+  </script>
 </body>
 </html>

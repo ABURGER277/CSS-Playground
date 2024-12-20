@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Playground</title>
+  <link rel="stylesheet" href="../main.css">
+  <link rel="stylesheet" href="../test.css">
+</head>
+<body>
+  <h1>animation</h1>
+  <div class="testBox" id="A">A</div>
+  <div class="testBox" id="B">B</div>
+  <div class="testBox" id="C">C</div>
+  <div class="testBox" id="D">D</div>
+  <div class="testBox" id="E">E</div>
+</body>
+<style>
+  #A {
+    animation: boxA 2s linear infinite alternate;
+  }
+
+  #B {
+    animation: boxA 2s infinite alternate;
+  }
+
+  #C {
+    animation: boxA 3s infinite alternate;
+  }
+
+  #D {
+    animation: boxA 2.5s linear infinite alternate;
+  }
+
+  #E {
+    animation: boxA 2s infinite alternate;
+  }
+
+  @keyframes boxA {
+    from {
+      margin-left: 10%
+    }
+    to {
+      margin-left: 90%
+    }
+  }
+
+  @keyframes boxB {
+    from {
+      margin-left: 10%
+    }
+    to {
+      margin-left: 90%
+    }
+  }
+
+  @keyframes boxC {
+    from {
+      margin-left: 10%
+    }
+    to {
+      margin-left: 90%
+    }
+  }
+
+  @keyframes boxD {
+    from {
+      margin-left: 10%
+    }
+    to {
+      margin-left: 90%
+    }
+  }
+
+  @keyframes boxE {
+    from {
+      margin-left: 10%
+    }
+    to {
+      margin-left: 90%
+    }
+  }
+
+</style>
+</html>

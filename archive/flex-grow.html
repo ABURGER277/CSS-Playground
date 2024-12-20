@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Playground</title>
+  <link rel="stylesheet" href="../main.css">
+</head>
+<body>
+  <h1>flex-grow</h1>
+  <span>A</span>
+  <select class="grow-selector" data-index="0">
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+  </select>
+  <span>B</span>
+  <select class="grow-selector" data-index="1">
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+  </select>
+  <span>C</span>
+  <select class="grow-selector" data-index="2">
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+  </select>
+  <span>D</span>
+  <select class="grow-selector" data-index="3">
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+  </select>
+  <span>E</span>
+  <select class="grow-selector" data-index="4">
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+  </select>
+  <span>F</span>
+  <select class="grow-selector" data-index="5">
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+  </select>
+  <div id="content">
+    <div class="box" style="background-color:red;">A</div>
+    <div class="box" style="background-color:lightblue;">B</div>
+    <div class="box" style="background-color:yellow;">C</div>
+    <div class="box" style="background-color:purple;">D</div>
+    <div class="box" style="background-color:lightgreen;">E</div>
+    <div class="box" style="background-color:brown;">F</div>
+  </div>
+  <hr/>
+  <span>try your browser smaller!</span>
+  <span>and Check your navbar</span>
+  <div id="menu">
+    <div class="navbar-box page-logo">Page Logo</div>
+    <div class="navbar-box empty-slot">empty slot</div>
+    <div class="navbar-box menu">menu 1</div>
+    <div class="navbar-box menu">menu 2</div>
+    <div class="navbar-box menu">menu 3</div>
+    <div class="navbar-box menu">menu 4</div>
+  </div>
+  <script>
+  const selectors = document.querySelectorAll('.grow-selector');
+  const boxes = document.querySelectorAll('#content .box');
+
+  selectors.forEach(function(selector) {
+    selector.addEventListener('change', function() {
+      const index = this.getAttribute('data-index');
+      const value = this.value;
+      boxes[index].style.flexGrow = value;
+    });
+  });
+  </script>
+  <style>
+  #content {
+    display: flex;
+    margin: 20px 0 20px 0;
+  }
+  .box {
+    flex-grow: 0;
+    padding: 20px;
+    text-align: center;
+    color: white;
+  }
+  .grow-selector {
+    margin: 10px;
+    width: 50px;
+    font-size: 25px;
+  }
+
+  /* menu example*/
+  #menu {
+    display: flex;
+    margin: 20px 0 20px 0;
+  }
+
+  .navbar-box {
+    padding: 10px;
+    border: 2px solid black;
+  }
+  .empty-slot {
+    flex-grow: 1;
+    color: gray;
+  }
+
+  </style>
+</body>
+</html>
