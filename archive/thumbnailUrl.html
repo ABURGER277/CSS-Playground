@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Thumbnail Viewer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    input {
+      width: calc(100% - 100px);
+      padding: 8px;
+      font-size: 16px;
+    }
+    button {
+      padding: 8px 20px;
+      font-size: 16px;
+      margin-left: 10px;
+    }
+    .thumbnail {
+      margin-top: 20px;
+    }
+    .container {
+      display: flex;
+    }
+    img {
+      max-width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>URL Thumbnail Viewer</h1>
+  <div class="container">
+    <input type="text" id="urlInput" placeholder="Enter URL here" />
+    <button onclick="fetchThumbnail()">Get Thumbnail</button>
+  </div>
+  <div class="thumbnail" id="thumbnailContainer">
+    <!-- Thumbnail will appear here -->
+  </div>
+
+  <script>
+    // keydown Enter
+    function handleKeyDown (e) {
+      if(e.code === "Enter") {
+        fetchThumbnail();
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown(e))
+
+    window.addEventListener("beforeunload", () => {
+      window.removeEventListener("keydown", handleKeyDown)
+    })
+
+    async function fetchThumbnail() {
+      const urlInput = document.getElementById("urlInput").value;
+      const thumbnailContainer = document.getElementById("thumbnailContainer");
+
+      // Clear previous thumbnail
+      thumbnailContainer.innerHTML = "";
+
+      if (!urlInput) {
+        alert("Please enter a URL.");
+        return;
+      }
+
+      // Ensure the URL starts with http:// or https://
+      const formattedUrl = urlInput.startsWith("http://") || urlInput.startsWith("https://")
+        ? urlInput
+        : `https://${urlInput}`;
+
+      try {
+        // Use a server-side proxy to fetch metadata
+        const response = await fetch(`https://api.microlink.io/?url=${encodeURIComponent(formattedUrl)}`);
+        const data = await response.json();
+
+        if(data.status !== "success") {
+          thumbnailContainer.innerHTML = "<p>Wrong URL entered</p>"
+          return;
+        }
+        if(data.data.image?.url) {
+          thumbnailContainer.innerHTML = "<p>Thumbnail not found.</p>"
+          return;
+        }
+        const img = document.createElement("img");
+        img.src = data.data.image.url;
+        img.alt = "Thumbnail";
+        thumbnailContainer.appendChild(img);
+      } catch (error) {
+        console.error("Error fetching thumbnail:", error);
+        thumbnailContainer.innerHTML = "<p>Error fetching thumbnail. Please try again.</p>";
+      }
+    }
+  </script>
+</body>
+</html>
