@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Playground</title>
+  <link rel="stylesheet" href="../main.css">
+  <link rel="stylesheet" href="../test.css">
+</head>
+<body>
+  <h1>pseduo-element</h1>
+  <div class="d-flex flex-column-center">
+    <span>::after</span>
+    <div class="testBox" id="A">'Root'</div>
+    <span>::before</span>
+    <div class="testBox" id="B">'Root'</div>
+    <span>::first-line</span>
+    <div class="testBox" id="C">
+      This is an example where only the first line is styled.
+      From the second line onward, the default style is applied.
+    </div>
+    <span>::first-letter</span>
+    <div class="testBox" id="D">The first letter of this sentence is emphasized.</div>
+    <span>::selector</span>
+    <div class="testBox" id="E">Try selecting this text. The selected part will be styled.</div>
+  </div>
+</body>
+<style>
+  span {
+    margin-top: 10px;
+    font-size: large;
+  }
+
+  .testBox {
+    width: 500px;
+  }
+
+  #A::after {
+    content: "<this is ::after element>";
+    margin: 5px;
+    color: red;
+  }
+
+  #B::before {
+    content: "<this is ::before element>";
+    margin: 5px;
+    color: red;
+  }
+
+  #C::first-line {
+    font-weight: 700;
+  }
+
+  #D::first-letter {
+    font-size: xx-large;
+    font-weight: 900;
+  }
+
+  #E::selection {
+    background-color: yellow;
+  }
+</style>

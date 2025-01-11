@@ -5,6 +5,7 @@ body {
   padding: 20px;
   background-color: #D5CABD;
 }
+
 header {
   h1 {
     font-size: 2em;
@@ -24,4 +25,18 @@ p {
   gap: 20px;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-column-center {
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
 }
