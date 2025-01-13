@@ -1,4 +1,4 @@
-# CSS-Playground
+# CSS-JS-Playground
 
 ## 디자인 및 레이아웃
 - **기본 디자인**:
