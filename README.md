@@ -20,5 +20,7 @@
   - Article Page의 내용(html 파일, 스크립트 등)을 최소한의 관리 포인트에서 유지할 수 있는 방법을 모색한다.
 
 ## 배포 전략
-- 현재는 `Netlify`(네틀리파이)로 배포를 예정중이다.
+- ~~현재는 `Netlify`(네틀리파이)로 배포를 예정중이다.~~
+  - Vercel로 배포 완료
 - `GitHub main branch`에 `push`하면 자동으로 배포될 `CI/CD`파이프라인을 구축하도록 한다.
+  - develop branch 추가 생성 후 일괄 푸쉬
